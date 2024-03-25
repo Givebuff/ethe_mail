@@ -1,0 +1,43 @@
+pragma solidity ^0.4.11;
+
+contract etheMail {
+ 
+    address receiver;
+
+    struct postBox {
+        string msgTitle;
+        string msgContent;
+        address sender;
+        uint timeStamp;
+    }
+
+    mapping(address => postBox[]) postbox;
+    
+    function appendString(address aim, string title, string content, uint time) {
+        receiver = aim;
+        postbox[receiver].push(postBox(title, content, msg.sender, time));
+    }
+    
+    function getCount() constant returns(uint length) {
+        return postbox[msg.sender].length;
+    }
+
+    function getStringAtIndex(uint index) constant returns(address, string, string, uint256) {
+        return (postbox[msg.sender][index].sender, postbox[msg.sender][index].msgTitle, postbox[msg.sender][index].msgContent, postbox[msg.sender][index].timeStamp);
+    }
+    
+    function remove(uint index)  returns(uint length) {
+        if (index >= postbox[msg.sender].length) return;
+
+        for (uint i = index; i<postbox[msg.sender].length-1; i++){
+            postbox[msg.sender][i] = postbox[msg.sender][i+1];
+        }
+        postbox[msg.sender].length--;
+        return postbox[msg.sender].length;
+    }
+    
+    function allRemove()  returns(uint length) {
+        delete postbox[msg.sender];
+        return postbox[msg.sender].length;
+    }
+}
