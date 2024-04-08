@@ -11,7 +11,7 @@ ipfs를 이용하여 해시화된 내용을 보내어 비용을 줄일 수 있�
 | 운영체제 | Windows 10 Home |
 | 개발언어 | Java Script, Solidity, Node.js |
 | 디자인 | HTML, CSS |
-| 개발도구 | MetaMask, Ethereum Smart Contract |
+| 개발도구 | MetaMask, Ethereum Smart Contract, [IPFS](https://ipfs.tech/) |
 
 # 참여 인원
 | 학과 | 이름 | 역할 |
